@@ -12,6 +12,8 @@ class user:
 	    #Checking birth year conditions
         if birth > 1382:
             raise ValueError('Users Cannot Be Under 18')
+	elif birth < 1300:
+            raise ValueError('Year Of Birth must be over 1300')
         self.__birth = birth
         
         #checking password validation(description is in setter section)
@@ -67,6 +69,8 @@ class user:
     def birth(self,value):
         if birth > 1382:
             raise ValueError('Users Cannot Be Under 18')
+	elif birth < 1300:
+            raise ValueError('Year Of Birth must be over 1300')
         self.__birth = birth
     
 # A getter setter for email...
@@ -120,7 +124,7 @@ class user:
         return "fullname : {}, year of birth: {} , email : {} , password : {} , id : {} ".format(self.full_name,self.birth,self.email,self.password,self.id)
         
 #testing user class   
-obj1 = user("sina","amareh",int(input("Enter Year of Birth: ")),"sina_amareh@gmail.com",input("enter password : "),input("Enter Id : "))
+obj1 = user("sina","amareh",int(input("Enter Year of Birth: ")),"sina_amareh@gmail.com",input("Enter Password : "),input("Enter Id : "))
 
 print(obj1.full_name)
 print(obj1.first)
