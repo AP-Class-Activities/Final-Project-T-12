@@ -3,11 +3,16 @@ import re
 from sre_constants import error  # for checking password validation 
 
 class user:
-    # A USER has a (first  and last name), an email, password and id
+    # A USER has a (first  and last name),Year they were born , an email, password and id
 
-    def __init__(self,first,last,email,password,id):
+    def __init__(self,first,last,birth,email,password,id):
         
         self.__first,self.__last,self.__email = first,last,email
+        
+	    #Checking birth year conditions
+        if birth > 1382:
+            raise ValueError('Users Cannot Be Under 18')
+        self.__birth = birth
         
         #checking password validation(description is in setter section)
         if len(password)>=8 : #(1) condition 
@@ -50,6 +55,19 @@ class user:
     @last.setter
     def last(self,value) :
         self.__last =  value
+    
+    # getter and setter for birth year
+    @property
+    def birth(self):
+	    return self.__birth
+    
+    ### Users should be over 18
+    
+    @birth.setter
+    def birth(self,value):
+        if birth > 1382:
+            raise ValueError('Users Cannot Be Under 18')
+        self.__birth = birth
     
 # A getter setter for email...
 
@@ -99,14 +117,15 @@ class user:
         self.__id = value
 # printing all user's info
     def __str__(self) -> str:
-        return "fullname : {} , email : {} , password : {} , id : {} ".format(self.full_name,self.email,self.password,self.id)
+        return "fullname : {}, year of birth: {} , email : {} , password : {} , id : {} ".format(self.full_name,self.birth,self.email,self.password,self.id)
         
 #testing user class   
-obj1 = user("sina","amareh","sina_amareh@gmail.com",input("enter password : "),input("Enter Id : "))
+obj1 = user("sina","amareh",int(input("Enter Year of Birth: ")),"sina_amareh@gmail.com",input("enter password : "),input("Enter Id : "))
 
 print(obj1.full_name)
 print(obj1.first)
 print(obj1.last)
+print(obj1.birth)
 print(obj1.email)
 print(obj1)
 
