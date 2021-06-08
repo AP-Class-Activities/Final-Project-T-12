@@ -64,8 +64,7 @@ class User :
         self.__birth_year = birth_year
         
                    #####setters and getters#####
-       
-  " first_name property "
+    " first_name property "
     @property
     def first_name(self):
         return self.__first_name
@@ -96,3 +95,23 @@ class User :
             raise Error("invalid email")
         self.__email = new_email
     
+    " birth_year property "
+    @property
+    def birth_year(self):
+        return self.__birth_year
+    @birth_year.setter
+    def birth_year(self, new_birth_year):
+        if not self.checkBirthyear(new_birth_year):
+            raise Error("invalid birth year")
+        self.__birth_year = new_birth_year
+    
+    " password property "
+    @property
+    def password(self):
+        return self.__password
+    @password.setter
+    def password(self, new_password):
+        password_status = self.checkPassword(new_password)
+        if not password_status.get('status'):
+            raise Error("weak password", code = password_status.get('errors'))
+        self.__password = new_password
