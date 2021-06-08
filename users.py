@@ -1,6 +1,6 @@
 
 import re
-
+from exceptions import Error
 """
 Basic Classes for Shop Objects 
 
@@ -44,3 +44,12 @@ class User :
         else :
             return False
     
+    def __init__(self, first_name, last_name, email, birth_year, password) :
+        self.__first_name, self.__last_name = first_name, last_name
+        if not checkEmail(email) :
+            raise Error("invalid email")
+        self.__email = email
+        password_status = checkPassword(password)
+        if not password_status.get('status') :
+            raise Error("weak password", code = password_status.get('errors'))
+        self.__password = password
