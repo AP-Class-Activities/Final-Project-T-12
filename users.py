@@ -62,3 +62,26 @@ class User :
         if not self.checkBirthyear(birth_year) :
             raise Error("invalid birth year")
         self.__birth_year = birth_year
+        
+                   #####setters and getters#####
+       
+  " first_name property "
+    @property
+    def first_name(self):
+        return self.__first_name
+    @first_name.setter
+    def first_name(self, new_first_name):
+        self.__first_name = new_first_name
+    
+    " last_name property "
+    @property
+    def last_name(self):
+        return self.__last_name
+    @last_name.setter
+    def last_name(self, new_last_name):
+        self.__last_name = new_last_name
+    
+    " full_name property (getter only) "
+    @property
+    def full_name(self):
+        return self.__first_name +" "+ self.__last_name
