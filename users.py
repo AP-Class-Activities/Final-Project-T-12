@@ -36,3 +36,11 @@ class User :
             status = False
             errors.append(4)
         return {'status': status, 'errors': errors}
+    " CHECK EMAIL METHOD "
+    def checkEmail(self, email):
+        pattern = '^(\w|\.|\_|\-)+[@](\w|\_|\-)+[.]\w{2,3}$'
+        if re.search(pattern, email) :
+            return True
+        else :
+            return False
+    
