@@ -43,6 +43,12 @@ class User :
             return True
         else :
             return False
+          
+    " CHECK BIRTH_YEAR "
+    def checkBirthyear(self, birth_year):
+        if birth_year <= 1382 and birth_year >= 1300 :
+            return True
+        return False
     
     def __init__(self, first_name, last_name, email, birth_year, password) :
         self.__first_name, self.__last_name = first_name, last_name
@@ -53,3 +59,6 @@ class User :
         if not password_status.get('status') :
             raise Error("weak password", code = password_status.get('errors'))
         self.__password = password
+        if not self.checkBirthyear(birth_year) :
+            raise Error("invalid birth year")
+        self.__birth_year = birth_year
