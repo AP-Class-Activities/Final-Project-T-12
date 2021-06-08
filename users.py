@@ -85,3 +85,14 @@ class User :
     @property
     def full_name(self):
         return self.__first_name +" "+ self.__last_name
+      
+    " email setter and getter "
+    @property
+    def email(self):
+        return self.__email
+    @email.setter
+    def email(self, new_email):
+        if not self.checkEmail(new_email):
+            raise Error("invalid email")
+        self.__email = new_email
+    
