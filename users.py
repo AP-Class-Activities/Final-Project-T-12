@@ -19,7 +19,7 @@ Basic Classes for Shop Objects
 """
 
 class User :
-  " CHECK PASSWORD METHOD "
+    " CHECK PASSWORD METHOD "
     def checkPassword(self, password):
         status = True
         errors = []
@@ -85,7 +85,7 @@ class User :
     def full_name(self):
         return self.__first_name +" "+ self.__last_name
       
-    " email setter and getter "
+    " email property "
     @property
     def email(self):
         return self.__email
@@ -124,3 +124,15 @@ class User :
     @property
     def wallet(self):
         return self.__wallet
+
+    " financial actions "
+    def deposit(self, amount):
+        if amount > 0:
+            self.__wallet += amount
+            return True
+        return False
+    def withdraw(self, amount):
+        if self.__wallet > amount + 999 :
+            self.__wallet -= amount
+            return True
+        return False
