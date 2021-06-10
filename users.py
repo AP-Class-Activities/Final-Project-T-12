@@ -115,3 +115,12 @@ class User :
         if not password_status.get('status'):
             raise Error("weak password", code = password_status.get('errors'))
         self.__password = new_password
+
+
+        " user wallet "
+        self.__wallet = 0
+        
+            " user wallet "
+    @property
+    def wallet(self):
+        return self.__wallet
