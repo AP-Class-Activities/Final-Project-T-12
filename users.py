@@ -135,4 +135,14 @@ class User :
         if self.__wallet > amount + 999 :
             self.__wallet -= amount
             return True
-        return False
+        return false
+    #seller class
+       class Seller(User):
+    def __init__(self, first_name, last_name, email, birth_year, password):
+        super().__init__(first_name, last_name, email, birth_year, password)
+        
+        " generating ID requires database "
+        self.__SL_ID = "SL"+ self.gen_id()
+        
+        " seller products list : list of product ids "
+        self.__products = []  
