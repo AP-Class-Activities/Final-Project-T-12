@@ -137,7 +137,7 @@ class User :
             return True
         return false
     #seller class
-       class Seller(User):
+class Seller(User):
     def __init__(self, first_name, last_name, email, birth_year, password):
         super().__init__(first_name, last_name, email, birth_year, password)
         
@@ -146,3 +146,14 @@ class User :
         
         " seller products list : list of product ids "
         self.__products = []  
+        
+class Customer(User):
+    def __init__(self, first_name, last_name, email, birth_year, password):
+        super().__init__(first_name, last_name, email, birth_year, password)
+        
+        " requires database "
+        self.__CU_ID = "CU"+ self.gen_id()
+        
+        "  requires database "
+        self.__wishlist = []
+        self.__bought = []
