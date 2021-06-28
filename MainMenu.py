@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
+import signup_panel
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -103,7 +104,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(290, 90, 501, 431))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("Options/Images/Main.png"))
+        self.label.setPixmap(QtGui.QPixmap("Images/Main.png"))
         self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -121,7 +122,10 @@ class Ui_MainWindow(object):
         pass
 
     def gotosignup(self):
-        pass
+        self.signupPanel = QtWidgets.QMainWindow()
+        self.ui = signup_panel.Ui_SignupPanel()
+        self.ui.setupUi(self.signupPanel)
+        self.signupPanel.show()
 
     def exit(self):
         MainWindow.close()
@@ -129,7 +133,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Online Shop"))
-        MainWindow.setWindowIcon(QIcon('Options/Images/null.png'))
+        MainWindow.setWindowIcon(QIcon('Images/null.png'))
         self.about_btn.setText(_translate("MainWindow", "About Us"))
         self.login_btn.setText(_translate("MainWindow", "ورود"))
         self.signup_btn.setText(_translate("MainWindow", "ثبت نام"))
