@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
-import signup_panel
+from Options import signup_panel
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -119,7 +119,11 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def gotologin(self):
-        pass
+        self.loginPanel = QtWidgets.QMainWindow()
+        self.ui = login_panel.Ui_LoginPanel()
+        self.ui.setupUi(self.loginPanel)
+        self.loginPanel.show()
+        MainWindow.close()
 
     def gotosignup(self):
         self.signupPanel = QtWidgets.QMainWindow()
